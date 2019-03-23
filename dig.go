@@ -16,7 +16,24 @@ const (
 	dnsTimeout time.Duration = 3 * time.Second
 )
 
-var roots = []string{"a.root-servers.net", "b.root-servers.net", "d.root-servers.net", "c.root-servers.net", "e.root-servers.net", "f.root-servers.net", "g.root-servers.net", "h.root-servers.net", "i.root-servers.net", "j.root-servers.net", "k.root-servers.net", "l.root-servers.net", "m.root-servers.net"}
+var roots = []string{"a.root-servers.net",
+	"b.root-servers.net", "d.root-servers.net",
+	"c.root-servers.net", "e.root-servers.net",
+	"f.root-servers.net", "g.root-servers.net",
+	"h.root-servers.net", "i.root-servers.net",
+	"j.root-servers.net", "k.root-servers.net",
+	"l.root-servers.net", "m.root-servers.net"}
+
+// New new dig
+func New() *Dig {
+	return &Dig{
+		Retry:        1,
+		RemoteAddr:   "8.8.8.8",
+		DialTimeout:  3 * time.Second,
+		WriteTimeout: 3 * time.Second,
+		ReadTimeout:  3 * time.Second,
+	}
+}
 
 //Dig dig
 type Dig struct {
@@ -460,7 +477,7 @@ type TraceResponse struct {
 	Msg      *dns.Msg
 }
 
-//Trace  类似于 dig +trace -t msqType
+//TraceForRecord  类似于 dig +trace -t msqType
 func (d *Dig) TraceForRecord(domain string, msgType uint16) ([]TraceResponse, error) {
 	var responses = make([]TraceResponse, 0)
 	var servers = make([]string, 0, 13)

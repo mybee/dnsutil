@@ -2,10 +2,15 @@
 [![](https://godoc.org/github.com/lixiangzhong/dnsutil?status.svg)](https://godoc.org/github.com/lixiangzhong/dnsutil)
 
 # dnsutil
+
 #### Golang DNS  dig功能库
 
 ```sh
 go get github.com/lixiangzhong/dnsutil
+```
+
+```go
+var dig dnsutil.Dig => dig := dnsutil.New()
 ```
 
 
@@ -147,7 +152,7 @@ func main() {
 		return
 	}
 	if polluted {
-		fmt.Println("被污染,你懂的")
+		fmt.Println("被污染")
 	} else {
 		fmt.Println("正常")
 	}
