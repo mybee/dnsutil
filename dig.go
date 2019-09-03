@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	dnsTimeout time.Duration = 3 * time.Second
+	dnsTimeout = 10 * time.Second
 )
 
 var roots = []string{"a.root-servers.net",
@@ -29,9 +29,9 @@ func New() *Dig {
 	return &Dig{
 		Retry:        1,
 		RemoteAddr:   "8.8.8.8",
-		DialTimeout:  3 * time.Second,
-		WriteTimeout: 3 * time.Second,
-		ReadTimeout:  3 * time.Second,
+		DialTimeout:  10 * time.Second,
+		WriteTimeout: 10 * time.Second,
+		ReadTimeout:  10 * time.Second,
 	}
 }
 
